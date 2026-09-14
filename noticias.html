@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<meta name="description" content="Noticias de Free Fire Zone: actualizaciones, eventos, personajes, armas y novedades del juego.">
+
+<title>Noticias de Free Fire | Free Fire Zone</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+    .news-page {
+        padding-top: 70px;
+    }
+
+    .news-hero {
+        padding: 70px 7%;
+        background:
+            radial-gradient(circle at 80% 30%, rgba(255,214,0,0.1), transparent 35%),
+            #0b0b0b;
+        border-bottom: 1px solid #292929;
+    }
+
+    .news-hero h1 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(45px, 6vw, 80px);
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    .news-hero h1 span {
+        color: var(--yellow);
+    }
+
+    .news-hero p {
+        color: var(--muted);
+        max-width: 600px;
+        line-height: 1.8;
+    }
+
+    .news-tools {
+        padding: 35px 7%;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        background: #101010;
+        border-bottom: 1px solid #292929;
+    }
+
+    .news-search {
+        background: #181818;
+        border: 1px solid #333;
+        color: white;
+        padding: 15px 20px;
+        width: min(100%, 350px);
+        outline: none;
+    }
+
+    .news-search:focus {
+        border-color: var(--yellow);
+    }
+
+    .categories {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .category-btn {
+        background: transparent;
+        border: 1px solid #333;
+        color: #aaa;
+        padding: 12px 18px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .category-btn.active,
+    .category-btn:hover {
+        background: var(--yellow);
+        border-color: var(--yellow);
+        color: #000;
+    }
+
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .article-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        transition: 0.3s;
+    }
+
+    .article-card:hover {
+        border-color: var(--yellow);
+        transform: translateY(-5px);
+    }
+
+    .article-visual {
+        height: 190px;
+        background:
+            linear-gradient(135deg, #242424, #101010);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .article-visual::after {
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid rgba(255,214,0,0.2);
+        border-radius: 50%;
+        box-shadow: 0 0 60px rgba(255,214,0,0.1);
+    }
+
+    .article-visual span {
+        font-family: 'Anton', sans-serif;
+        font-size: 48px;
+        color: var(--yellow);
+        letter-spacing: 3px;
+        z-index: 1;
+    }
+
+    .article-body {
+        padding: 28px;
+    }
+
+    .article-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .article-category {
+        color: var(--yellow);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .article-date {
+        color: #666;
+        font-size: 10px;
+    }
+
+    .article-body h2 {
+        font-size: 21px;
+        line-height: 1.4;
+        margin-bottom: 15px;
+    }
+
+    .article-body p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .article-link {
+        display: inline-block;
+        color: var(--yellow);
+        font-size: 12px;
+        font-weight: 900;
+        margin-top: 20px;
+    }
+
+    .no-results {
+        display: none;
+        color: #777;
+        text-align: center;
+        padding: 50px 0;
+        grid-column: 1 / -1;
+    }
+
+    @media (max-width: 1000px) {
+        .articles-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 650px) {
+        .articles-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .news-tools {
+            align-items: stretch;
+        }
+
+        .news-search {
+            width: 100%;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<header class="header">
+
+```
+<a href="../index.html" class="logo">
+    FREE FIRE <span>ZONE</span>
+</a>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    ☰
+</button>
+
+<nav class="nav" id="nav">
+    <a href="../index.html">Inicio</a>
+    <a href="noticias.html">Noticias</a>
+    <a href="guias.html">Guías</a>
+    <a href="sensibilidad.html">Sensibilidad</a>
+</nav>
+```
+
+</header>
+
+<main>
+
+<section class="news-hero">
+
+```
+<span class="section-label">ACTUALIDAD</span>
+
+<h1>
+    NOTICIAS DE<br>
+    <span>FREE FIRE</span>
+</h1>
+
+<p>
+    Mantente informado sobre las actualizaciones, eventos,
+    personajes, armas y novedades de Free Fire.
+</p>
+```
+
+</section>
+
+<section class="news-tools">
+
+```
+<input
+    type="search"
+    id="newsSearch"
+    class="news-search"
+    placeholder="Buscar noticias..."
+    aria-label="Buscar noticias"
+>
+
+<div class="categories">
+
+    <button class="category-btn active" data-category="todos">
+        Todas
+    </button>
+
+    <button class="category-btn" data-category="actualizaciones">
+        Actualizaciones
+    </button>
+
+    <button class="category-btn" data-category="eventos">
+        Eventos
+    </button>
+
+    <button class="category-btn" data-category="competitivo">
+        Competitivo
+    </button>
+
+</div>
+```
+
+</section>
+
+<section class="section">
+
+```
+<div class="section-heading">
+    <div>
+        <span class="section-label">ÚLTIMAS PUBLICACIONES</span>
+        <h2>Noticias y novedades</h2>
+    </div>
+</div>
+
+<div class="articles-grid" id="articlesGrid">
+
+    <article class="article-card" data-category="actualizaciones">
+
+        <div class="article-visual">
+            <span>OB</span>
+        </div>
+
+        <div class="article-body">
+
+            <div class="article-meta">
+                <span class="article-category">ACTUALIZACIONES</span>
+                <span class="article-date">NOTICIA</span>
+            </div>
+
+            <h2>
+                Cómo consultar las notas de parche de Free Fire
+            </h2>
+
+            <p>
+                Aprende dónde consultar las novedades oficiales
+                y cómo identificar los cambios que afectan a tus
+                partidas.
+            </p>
+
+            <a href="#" class="article-link">
+                Leer artículo →
+            </a>
+
+        </div>
+
+    </article>
+
+    <article class="article-card" data-category="eventos">
+
+        <div class="article-visual">
+            <span>EVENTOS</span>
+        </div>
+
+        <div class="article-body">
+
+            <div class="article-meta">
+                <span class="article-category">EVENTOS</span>
+                <span class="article-date">GUÍA</span>
+            </div>
+
+            <h2>
+                Cómo revisar los eventos y sus recompensas
+            </h2>
+
+            <p>
+                Consejos para consultar los eventos disponibles,
+                revisar sus condiciones y evitar confusiones con
+                recompensas no verificadas.
+            </p>
+
+            <a href="#" class="article-link">
+                Leer artículo →
+            </a>
+
+        </div>
+
+    </article>
+
+    <article class="article-card" data-category="competitivo">
+
+        <div class="article-visual">
+            <span>ESPORTS</span>
+        </div>
+
+        <div class="article-body">
+
+            <div class="article-meta">
+                <span class="article-category">COMPETITIVO</span>
+                <span class="article-date">ANÁLISIS</span>
+            </div>
+
+            <h2>
+                Qué puedes aprender de los jugadores competitivos
+            </h2>
+
+            <p>
+                Analiza sus movimientos, toma de decisiones,
+                uso de cobertura y coordinación con el equipo.
+            </p>
+
+            <a href="#" class="article-link">
+                Leer artículo →
+            </a>
+
+        </div>
+
+    </article>
+
+    <article class="article-card" data-category="actualizaciones">
+
+        <div class="article-visual">
+            <span>ARMAS</span>
+        </div>
+
+        <div class="article-body">
+
+            <div class="article-meta">
+                <span class="article-category">ACTUALIZACIONES</span>
+                <span class="article-date">GUÍA</span>
+            </div>
+
+            <h2>
+                Cómo elegir armas según tu estilo de juego
+            </h2>
+
+            <p>
+                Aprende a combinar armas de corto y largo alcance
+                según el tipo de enfrentamiento.
+            </p>
+
+            <a href="#" class="article-link">
+                Leer artículo →
+            </a>
+
+        </div>
+
+    </article>
+
+    <article class="article-card" data-category="eventos">
+
+        <div class="article-visual">
+            <span>RECOMPENSAS</span>
+        </div>
+
+        <div class="article-body">
+
+            <div class="article-meta">
+                <span class="article-category">EVENTOS</span>
+                <span class="article-date">CONSEJOS</span>
+            </div>
+
+            <h2>
+                Cómo reconocer información confiable sobre recompensas
+            </h2>
+
+            <p>
+                Comprueba siempre la fuente de los anuncios
+                y evita páginas que prometen diamantes gratuitos.
+            </p>
+
+            <a href="#" class="article-link">
+                Leer artículo →
+            </a>
+
+        </div>
+
+    </article>
+
+    <article class="article-card" data-category="competitivo">
+
+        <div class="article-visual">
+            <span>RANGO</span>
+        </div>
+
+        <div class="article-body">
+
+            <div class="article-meta">
+                <span class="article-category">COMPETITIVO</span>
+                <span class="article-date">ESTRATEGIA</span>
+            </div>
+
+            <h2>
+                Consejos para mejorar tu rendimiento en clasificatoria
+            </h2>
+
+            <p>
+                Aprende a controlar los enfrentamientos, jugar
+                con información y tomar mejores decisiones.
+            </p>
+
+            <a href="#" class="article-link">
+                Leer artículo →
+            </a>
+
+        </div>
+
+    </article>
+
+    <p class="no-results" id="noResults">
+        No encontramos noticias con esa búsqueda.
+    </p>
+
+</div>
+```
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+```
+<a href="../index.html" class="logo">
+    FREE FIRE <span>ZONE</span>
+</a>
+
+<p>
+    Noticias y guías para la comunidad de Free Fire.
+</p>
+
+<p class="copyright">
+    © 2026 Free Fire Zone. Sitio independiente de fans.
+</p>
+```
+
+</footer>
+
+<script src="../script.js"></script>
+
+<script>
+
+const searchInput = document.getElementById('newsSearch');
+const categoryButtons = document.querySelectorAll('.category-btn');
+const articles = document.querySelectorAll('.article-card');
+const noResults = document.getElementById('noResults');
+
+let selectedCategory = 'todos';
+
+function filterArticles() {
+
+    const search = searchInput.value.toLowerCase().trim();
+
+    let visibleCount = 0;
+
+    articles.forEach(article => {
+
+        const category = article.dataset.category;
+        const text = article.textContent.toLowerCase();
+
+        const matchesCategory =
+            selectedCategory === 'todos' ||
+            category === selectedCategory;
+
+        const matchesSearch = text.includes(search);
+
+        if (matchesCategory && matchesSearch) {
+            article.style.display = '';
+            visibleCount++;
+        } else {
+            article.style.display = 'none';
+        }
+
+    });
+
+    noResults.style.display =
+        visibleCount === 0 ? 'block' : 'none';
+
+}
+
+searchInput.addEventListener('input', filterArticles);
+
+categoryButtons.forEach(button => {
+
+    button.addEventListener('click', () => {
+
+        categoryButtons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        button.classList.add('active');
+
+        selectedCategory = button.dataset.category;
+
+        filterArticles();
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
